@@ -14,6 +14,7 @@ func Init() *echo.Echo {
 		return c.String(http.StatusOK, "Berhasil menggunakan echo")
 	})
 	e.GET("/pegawai", controllers.FetchAllPegawaiControl)
+	e.POST("/pegawai", controllers.StorePegawaiControl)
 
 	return e
 }
