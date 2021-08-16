@@ -57,6 +57,8 @@ func StorePegawai(nama, alamat, telepon string) (Response, error) {
 		return res, err
 	}
 
+	defer sqlpre.Close()
+
 	result, err := sqlpre.Exec(nama, alamat, telepon)
 	if err != nil {
 		return res, err
@@ -71,6 +73,39 @@ func StorePegawai(nama, alamat, telepon string) (Response, error) {
 	res.Message = "Succes"
 	res.Data = map[string]int64{
 		"last_inserted_id" : lastInsertId,
+	}
+
+	return res, nil
+}
+
+func UpdatePegawai(id int, nama, alamat, telepon string) (Response, error) {
+	var res Response
+
+	con := db.CreateConn()
+	
+	sqlStatement := "UPDATE pegawai SET nama = ?, alamat = ?, telepon = ? WHERE id = ?"
+
+	sqlpre, err := con.Prepare(sqlStatement)
+	if err != nil {
+		return res, err
+	}
+	
+	defer sqlpre.Close()
+	
+	result, err := sqlpre.Exec(nama, alamat, telepon, id)
+	if err != nil {
+		return res, err
+	}
+
+	rowsAffected, err := result.RowsAffected()
+	if err != nil {
+		return res, err
+	}
+
+	res.Status = http.StatusOK
+	res.Message = "Succes"
+	res.Data = map[string]int64{
+		"rows_affected" : rowsAffected,
 	}
 
 	return res, nil

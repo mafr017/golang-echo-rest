@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 	"github.com/mafr017/rest_echo/models"
@@ -26,5 +27,24 @@ func StorePegawaiControl(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 	
+	return c.JSON(http.StatusOK, result)
+}
+
+func UpdatePegawaiControl(c echo.Context) error {
+	id := c.FormValue("id")
+	nama := c.FormValue("nama")
+	alamat := c.FormValue("alamat")
+	telepon := c.FormValue("telepon")
+	
+	idConverted, err := strconv.Atoi(id)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	result, err := models.UpdatePegawai(idConverted, nama, alamat, telepon)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
 	return c.JSON(http.StatusOK, result)
 }
