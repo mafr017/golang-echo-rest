@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo/v4"
-	"github.com/mafr017/rest_echo/models"
+	"github.com/mafr017/golang-rest-echo/models"
 )
 
 func FetchAllPegawaiControl(c echo.Context) error {

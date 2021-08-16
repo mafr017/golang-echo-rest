@@ -4,7 +4,7 @@ import (
 	"database/sql"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/mafr017/rest_echo/config"
+	"github.com/mafr017/golang-rest-echo/config"
 )
 
 var db *sql.DB

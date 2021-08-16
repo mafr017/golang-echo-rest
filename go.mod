@@ -1,4 +1,4 @@
-module github.com/mafr017/rest_echo
+module github.com/mafr017/golang-rest-echo
 
 go 1.16
 

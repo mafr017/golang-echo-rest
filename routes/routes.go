@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/mafr017/rest_echo/controllers"
+	"github.com/mafr017/golang-rest-echo/controllers"
 )
 
 func Init() *echo.Echo {

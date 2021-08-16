@@ -3,7 +3,7 @@ package models
 import (
 	"net/http"
 
-	"github.com/mafr017/rest_echo/db"
+	"github.com/mafr017/golang-rest-echo/db"
 )
 
 type Pegawai struct {
