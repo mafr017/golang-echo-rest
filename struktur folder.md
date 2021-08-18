@@ -10,3 +10,16 @@
         > ini untuk folder model data
     - routes
         > ini untuk folder inisialisasi routing
+
+## Tree directory awal
+```
+golang-rest-echo
+├── config
+├── controllers
+├── db
+├── helpers
+├── middleware
+├── models
+├── routes
+└── vendor
+```
