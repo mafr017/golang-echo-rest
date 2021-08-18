@@ -17,13 +17,16 @@ func Init() *echo.Echo {
 
 	// Simple CRUD
 	e.GET("/pegawai", controllers.FetchAllPegawaiControl, middleware.IsAuthenticated)
-	e.POST("/pegawai", controllers.StorePegawaiControl)
-	e.PUT("/pegawai", controllers.UpdatePegawaiControl)
-	e.DELETE("/pegawai", controllers.DeletePegawaiControl)
+	e.POST("/pegawai", controllers.StorePegawaiControl, middleware.IsAuthenticated)
+	e.PUT("/pegawai", controllers.UpdatePegawaiControl, middleware.IsAuthenticated)
+	e.DELETE("/pegawai", controllers.DeletePegawaiControl, middleware.IsAuthenticated)
 
 	// User Login Routes
 	e.GET("/generate-hash/:password", controllers.GenerateHashPasswordControl)
 	e.POST("/login", controllers.CheckLoginControl)
+
+	e.GET("/test-struct-validation", controllers.TestStructValidation)
+	e.GET("/test-var-validation", controllers.TestVariableValidation)
 
 	return e
 }
